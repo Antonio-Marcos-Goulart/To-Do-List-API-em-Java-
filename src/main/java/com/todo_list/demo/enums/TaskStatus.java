@@ -1,4 +1,4 @@
-package com.todo_list.demo.enuns;
+package com.todo_list.demo.enums;
 
 public enum TaskStatus {
     PROGRESS,
