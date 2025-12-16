@@ -21,3 +21,5 @@ public class SwaggerConfig {
                                 .email("antoniomarcos5674335@gmail.com")));
     }
 }
+
+// http://localhost:8080/swagger-ui/index.html
