@@ -45,7 +45,6 @@ public class TaskService {
         if (title != null && !title.isBlank()) {
             return taskRepository.findByTaskTitleContainingIgnoreCase(title);
         }
-
         return List.of();
     }
 
@@ -70,7 +69,6 @@ public class TaskService {
         if (dto.getTaskPriority() != null) {
             existingTask.setTaskPriority(dto.getTaskPriority());
         }
-
         return taskRepository.save(existingTask);
     }
 
