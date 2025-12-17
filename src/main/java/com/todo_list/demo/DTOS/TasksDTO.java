@@ -3,8 +3,15 @@ package com.todo_list.demo.DTOS;
 import com.todo_list.demo.enums.TaskPriority;
 import com.todo_list.demo.enums.TaskStatus;
 import com.todo_list.demo.model.Task;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class TasksDTO {
+
     private Long taskId;
     private String taskTitle;
     private String taskDescription;
@@ -12,10 +19,12 @@ public class TasksDTO {
     private TaskPriority taskPriority;
 
     public TasksDTO(Task task) {
-        this.taskId = taskId;
-        this.taskTitle = taskTitle;
-        this.taskDescription = taskDescription;
-        this.taskStatus = taskStatus;
-        this.taskPriority = taskPriority;
+        this.taskId = task.getTaskId();
+        this.taskTitle = task.getTaskTitle();
+        this.taskDescription = task.getTaskDescription();
+        this.taskStatus = task.getTaskStatus();
+        this.taskPriority = task.getTaskPriority();
     }
+
+
 }
