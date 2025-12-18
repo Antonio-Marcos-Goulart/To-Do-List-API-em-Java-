@@ -81,6 +81,14 @@ public class TaskService {
         if (dto.getTaskPriority() != null) {
             existingTask.setTaskPriority(dto.getTaskPriority());
         }
+
+        if (dto.getTaskGroupId() != null) {
+            TaskGroup group = taskGroupRepository.findById(dto.getTaskGroupId())
+                    .orElseThrow(() -> new IllegalArgumentException(
+                            "Task Group not found with id " + dto.getTaskGroupId()
+                    ));
+            existingTask.setTaskGroup(group);
+        }
         return taskRepository.save(existingTask);
     }
 
