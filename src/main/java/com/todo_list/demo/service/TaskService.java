@@ -26,6 +26,15 @@ public class TaskService {
         task.setTaskDescription(dto.getTaskDescription());
         task.setTaskStatus(dto.getTaskStatus());
         task.setTaskPriority(dto.getTaskPriority());
+
+        if (dto.getTaskGroupId() == null) {
+            throw new IllegalArgumentException("TaskGroupId is required");
+        }
+        TaskGroup group = taskGroupRepository.findById(dto.getTaskGroupId())
+                .orElseThrow(() -> new IllegalArgumentException(
+                        "TaskGroup not found with id " + dto.getTaskGroupId()
+                ));
+        task.setTaskGroup(group);
         return taskRepository.save(task);
     }
 
