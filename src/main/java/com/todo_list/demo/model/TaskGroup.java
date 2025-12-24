@@ -24,12 +24,12 @@ public class TaskGroup {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long taskgroupId;
 
     @NotEmpty
     @Size(min = 3, max = 100, message = "The task group title must be between 3 and 100 characters")
     @Column(name = "taskgroup_title")
-    private String taskTitle;
+    private String taskGroupTitle;
 
     @OneToMany(mappedBy = "taskGroup",
             cascade = CascadeType.ALL,
@@ -37,5 +37,4 @@ public class TaskGroup {
     )
     @JsonManagedReference
     private List<Task> tasks = new ArrayList<>();
-
 }

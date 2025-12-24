@@ -24,15 +24,15 @@ public class TaskController {
         this.taskService = taskService;
     }
 
-    @Operation(summary = "Create task", description = "Create task")
     @PostMapping
+    @Operation(summary = "Create task", description = "Create task")
     public ResponseEntity<Task> createTask(@Valid @RequestBody TasksDTO dto) {
         Task saved = taskService.createTask(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }
 
-    @Operation(summary = "Update task by id", description = "Update an existing task by its id")
     @PutMapping("/{id}")
+    @Operation(summary = "Update task by id", description = "Update an existing task by its id")
     public ResponseEntity<Task> updateTask(
             @PathVariable Long id,
             @Valid @RequestBody TasksDTO dto) {
@@ -40,28 +40,28 @@ public class TaskController {
         return ResponseEntity.ok(updatedTask);
     }
 
-    @Operation(summary = "List all tasks", description = "List all tasks")
     @GetMapping("/all_tasks")
+    @Operation(summary = "List all tasks", description = "List all tasks")
     public List<TasksDTO> getAllTasks(){
         return taskService.getAllTasks().stream().map(TasksDTO::new).collect(Collectors.toList());
     }
 
-    @Operation(summary = "Delete tasks by Id", description = "Delete tasks by Id")
     @DeleteMapping("/{id}")
+    @Operation(summary = "Delete tasks by Id", description = "Delete tasks by Id")
     public ResponseEntity<Void> deleteTask(@PathVariable Long id) {
         taskService.deleteTask(id);
         return ResponseEntity.noContent().build();
     }
 
-    @Operation(summary = "Search task by Id", description = "Search tasks by Id")
     @GetMapping("/{id}")
+    @Operation(summary = "Search task by Id", description = "Search tasks by Id")
     public ResponseEntity<TasksDTO> getTaskById(@PathVariable Long id) {
         Task  task = taskService.getTaskById(id);
         return ResponseEntity.ok(new TasksDTO(task));
     }
 
-    @Operation(summary = "Search task by title and Id", description = "Search tasks by title and Id")
     @GetMapping("/search")
+    @Operation(summary = "Search task by title and Id", description = "Search tasks by title and Id")
     public ResponseEntity<List<Task>> searchTasks(
             @RequestParam(required = false) Long id,
             @RequestParam(required = false) String title) {

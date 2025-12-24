@@ -5,6 +5,7 @@ import com.todo_list.demo.model.Task;
 import com.todo_list.demo.model.TaskGroup;
 import com.todo_list.demo.repository.TaskGroupRepository;
 import com.todo_list.demo.repository.TaskRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public class TaskService {
     private final TaskRepository taskRepository;
     private final TaskGroupRepository taskGroupRepository;
 
+    @Autowired
     public TaskService(TaskRepository taskRepository, TaskGroupRepository taskGroupRepository) {
         this.taskRepository = taskRepository;
         this.taskGroupRepository = taskGroupRepository;
