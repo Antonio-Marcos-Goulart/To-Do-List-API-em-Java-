@@ -7,6 +7,7 @@ import com.todo_list.demo.repository.TaskGroupRepository;
 import com.todo_list.demo.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -22,6 +23,7 @@ public class TaskService {
         this.taskGroupRepository = taskGroupRepository;
     }
 
+    @Transactional
     public Task createTask(TasksDTO dto) {
         Task task = new Task();
         task.setTaskTitle(dto.getTaskTitle());
@@ -40,16 +42,18 @@ public class TaskService {
         return taskRepository.save(task);
     }
 
-
+    @Transactional(readOnly = true)
     public Task getTaskById(Long id) {
         return taskRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Task not found with id: " + id));
     }
 
+    @Transactional(readOnly = true)
     public List<Task> getAllTasks() {
         return taskRepository.findAll();
     }
 
+    @Transactional(readOnly = true)
     public List<Task> searchTask(Long id, String title) {
         if (id != null) {
             return taskRepository.findById(id)
@@ -62,6 +66,7 @@ public class TaskService {
         return List.of();
     }
 
+    @Transactional
     public Task updateTask(Long id, TasksDTO dto) {
         Task existingTask = getTaskById(id);
 
@@ -94,6 +99,7 @@ public class TaskService {
         return taskRepository.save(existingTask);
     }
 
+    @Transactional
     public void deleteTask(Long id) {
         if (!taskRepository.existsById(id)) {
             throw new IllegalArgumentException("Task not found with id: " + id);
