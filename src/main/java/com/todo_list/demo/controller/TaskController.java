@@ -50,13 +50,13 @@ public class TaskController {
     @Operation(summary = "Delete tasks by Id", description = "Delete tasks by Id")
     public ResponseEntity<Void> deleteTask(@PathVariable Long id) {
         taskService.deleteTask(id);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.noContent().build(); // no response - no content
     }
 
     @GetMapping("/{id}")
     @Operation(summary = "Search task by Id", description = "Search tasks by Id")
     public ResponseEntity<TasksDTO> getTaskById(@PathVariable Long id) {
-        Task  task = taskService.getTaskById(id);
+        Task task = taskService.getTaskById(id);
         return ResponseEntity.ok(new TasksDTO(task));
     }
 
