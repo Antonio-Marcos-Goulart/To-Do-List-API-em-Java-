@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,6 +20,7 @@ public class TasksDTO {
     private TaskStatus taskStatus;
     private TaskPriority taskPriority;
     private Long taskGroupId;
+    private LocalDate createDate;
 
     public TasksDTO(Task task) {
         this.taskId = task.getTaskId();
@@ -25,6 +28,7 @@ public class TasksDTO {
         this.taskDescription = task.getTaskDescription();
         this.taskStatus = task.getTaskStatus();
         this.taskPriority = task.getTaskPriority();
+        this.createDate = task.getCreatedDate();
 
         if (task.getTaskGroup() != null) {
             this.taskGroupId = task.getTaskGroup().getTaskgroupId();
