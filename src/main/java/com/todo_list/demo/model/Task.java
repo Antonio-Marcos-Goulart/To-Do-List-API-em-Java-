@@ -54,6 +54,5 @@ public class Task {
     @JoinColumn(name = "task_group_id")
     @JsonBackReference
     private TaskGroup taskGroup;
-
 }
 
