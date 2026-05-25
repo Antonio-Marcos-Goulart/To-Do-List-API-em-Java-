@@ -55,19 +55,6 @@ Os principais objetivos do projeto são:
 
 ---
 
-### Arquitetura
-
-O projeto adota uma arquitetura em camadas, promovendo separação de responsabilidades e maior manutenibilidade do código:
-
-- **Controller**: responsável por receber e responder às requisições HTTP
-- **Service**: responsável pelas regras de negócio
-- **Repository**: responsável pelo acesso e persistência dos dados
-- **Model**: entidades JPA que representam o domínio
-- **DTO**: objetos utilizados para transferência de dados
-- **Config**: configurações gerais da aplicação
-
----
-
 ## English
 
 REST API for task management (To-Do List), developed using Java 21 and Spring Boot 3.4.1.
@@ -120,16 +107,3 @@ The main goals of this project are:
 - Input data validation
 - Automatic API documentation generation
 - Containerized execution via Docker and Docker Compose
-
----
-
-### Architecture
-
-The project follows a layered architecture, promoting separation of concerns and improved code maintainability:
-
-- **Controller**: handles HTTP requests and responses
-- **Service**: contains business rules
-- **Repository**: handles data access and persistence
-- **Model**: JPA entities representing the domain
-- **DTO**: data transfer objects
-- **Config**: application configuration classes
